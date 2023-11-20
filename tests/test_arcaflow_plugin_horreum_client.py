@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import unittest
-import arcaflow_plugin_template_python
+import horreum_client_plugin
 from arcaflow_plugin_sdk import plugin
 
 
@@ -8,21 +8,21 @@ class HelloWorldTest(unittest.TestCase):
     @staticmethod
     def test_serialization():
         plugin.test_object_serialization(
-            arcaflow_plugin_template_python.InputParams("John Doe")
+            horreum_client_plugin.InputParams("John Doe")
         )
 
         plugin.test_object_serialization(
-            arcaflow_plugin_template_python.SuccessOutput("Hello, world!")
+            horreum_client_plugin.SuccessOutput("Hello, world!")
         )
 
         plugin.test_object_serialization(
-            arcaflow_plugin_template_python.ErrorOutput(error="This is an error")
+            horreum_client_plugin.ErrorOutput(error="This is an error")
         )
 
     def test_functional(self):
-        input = arcaflow_plugin_template_python.InputParams(name="Example Joe")
+        input = horreum_client_plugin.InputParams(name="Example Joe")
 
-        output_id, output_data = arcaflow_plugin_template_python.hello_world(
+        output_id, output_data = horreum_client_plugin.hello_world(
             params=input, run_id="plugin_ci"
         )
 
@@ -30,7 +30,7 @@ class HelloWorldTest(unittest.TestCase):
         self.assertEqual("success", output_id)
         self.assertEqual(
             output_data,
-            arcaflow_plugin_template_python.SuccessOutput("Hello, Example Joe!"),
+            horreum_client_plugin.SuccessOutput("Hello, Example Joe!"),
         )
 
 

@@ -1,4 +1,4 @@
-# Python Plugin Template Project
+# Horreum Client Plugin Project
 
 ## Image Building
 
