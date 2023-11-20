@@ -44,6 +44,7 @@ def horreum_client(
         f"&stop={params.test_stop_time}&owner={params.test_owner}"
         f"&access={params.test_access_rights}"
     )
+    print(f"Send url is {send_url}")
     send_headers = {
         "Authorization": f"Bearer {token}",
         "content-type": "application/json",

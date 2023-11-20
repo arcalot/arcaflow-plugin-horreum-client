@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from arcaflow_plugin_sdk import schema
 
 
-class access(enum.Enum):
+class access(str, enum.Enum):
     PUBLIC = "PUBLIC"
     PROTECTED = "PROTECTED"
     PRIVATE = "PRIVATE"
@@ -60,8 +60,7 @@ class InputParams:
         schema.description("Owner of the object being uploaded."),
     ]
     test_access_rights: typing.Annotated[
-        # access,
-        str,
+        access,
         schema.name("test access rights"),
         schema.description("Access rights for the object being uploaded."),
     ]
