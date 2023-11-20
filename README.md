@@ -30,8 +30,13 @@ Uploads an object to the Horreum server
                 <table><tbody><tr><th>Name:</th><td>horreum url</td></tr><tr><th>Description:</th><td>Base URL for the Horreum server.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td><tr><th>Must match pattern:</th><td><code>((http|https)\:\/\/)?[a-zA-Z0-9\.\/\?\:@\-_=#]&#43;\.([a-zA-Z]){2,6}([a-zA-Z0-9\.\&amp;\/\?\:@\-_=#])*</code></td></tr></tbody></table>
             </details><details><summary>horreum_username (<code>string</code>)</summary>
                 <table><tbody><tr><th>Name:</th><td>horreum username</td></tr><tr><th>Description:</th><td>Username for the Horreum server.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
-            </details><details><summary>test_access_rights (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>test access rights</td></tr><tr><th>Description:</th><td>Access rights for the object being uploaded.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+            </details><details><summary>test_access_rights (<code>enum[string]</code>)</summary>
+                <table><tbody><tr><th>Name:</th><td>test access rights</td></tr><tr><th>Description:</th><td>Access rights for the object being uploaded.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
+        <details><summary>Values</summary>
+            <ul><li><strong><code>PRIVATE</code>:</strong> PRIVATE</li><li><strong><code>PROTECTED</code>:</strong> PROTECTED</li><li><strong><code>PUBLIC</code>:</strong> PUBLIC</li></ul>
+        </details>
+    </td>
+</tr></tbody></table>
             </details><details><summary>test_name (<code>string</code>)</summary>
                 <table><tbody><tr><th>Name:</th><td>test name</td></tr><tr><th>Description:</th><td>Name of the target test in Horreum for the object being uploaded.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>test_owner (<code>string</code>)</summary>
@@ -54,8 +59,13 @@ Uploads an object to the Horreum server
         <table><tbody><tr><th>Name:</th><td>horreum url</td></tr><tr><th>Description:</th><td>Base URL for the Horreum server.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td><tr><th>Must match pattern:</th><td><code>((http|https)\:\/\/)?[a-zA-Z0-9\.\/\?\:@\-_=#]&#43;\.([a-zA-Z]){2,6}([a-zA-Z0-9\.\&amp;\/\?\:@\-_=#])*</code></td></tr></tbody></table>
         </details><details><summary>horreum_username (<code>string</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>horreum username</td></tr><tr><th>Description:</th><td>Username for the Horreum server.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
-        </details><details><summary>test_access_rights (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>test access rights</td></tr><tr><th>Description:</th><td>Access rights for the object being uploaded.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        </details><details><summary>test_access_rights (<code>enum[string]</code>)</summary>
+        <table><tbody><tr><th>Name:</th><td>test access rights</td></tr><tr><th>Description:</th><td>Access rights for the object being uploaded.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
+        <details><summary>Values</summary>
+            <ul><li><strong><code>PRIVATE</code>:</strong> PRIVATE</li><li><strong><code>PROTECTED</code>:</strong> PROTECTED</li><li><strong><code>PUBLIC</code>:</strong> PUBLIC</li></ul>
+        </details>
+    </td>
+</tr></tbody></table>
         </details><details><summary>test_name (<code>string</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>test name</td></tr><tr><th>Description:</th><td>Name of the target test in Horreum for the object being uploaded.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>test_owner (<code>string</code>)</summary>
