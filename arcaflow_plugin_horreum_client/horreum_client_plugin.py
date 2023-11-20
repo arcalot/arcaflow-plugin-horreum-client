@@ -18,51 +18,53 @@ from horreum_client_schema import InputParams, SuccessOutput, ErrorOutput
 def horreum_client(
     params: InputParams,
 ) -> typing.Tuple[str, typing.Union[SuccessOutput, ErrorOutput]]:
-    
-    auth_url = params.horreum_keycloak_url + "/realms/horreum/protocol/openid-connect/token"
+    auth_url = (
+        params.horreum_keycloak_url + "/realms/horreum/protocol/openid-connect/token"
+    )
     auth_obj = {
         "username": params.horreum_username,
         "password": params.horreum_password,
         "grant_type": "password",
         "client_id": "horreum-ui",
     }
-    
-    auth_return = requests.post(auth_url, json=auth_obj, verify=False)
-    token = json.loads(auth_return.text)["access_token"]
 
-    send_url = params.horreum_url + "/api/run/data"
-    send_headers = {f"Authorization: Bearer {token}"}
-    send_obj = {
-        "test": params.test_name,
-        "owner": params.test_owner,
-        "access": params.test_access_rights,
-        "start": params.test_start_time,
-        "stop": params.test_stop_time,
-        params.data_object,
+    try:
+        print("==> Authenticating with keycloak...")
+        auth_return = requests.post(auth_url, data=auth_obj, verify=False)
+        token = json.loads(auth_return.text)["access_token"]
+
+    except requests.ConnectionError or requests.HTTPError or requests.Timeout:
+        return "error", ErrorOutput(
+            f"Error communicating with server: {auth_return.text}"
+        )
+
+    send_url = (
+        params.horreum_url
+        + f"/api/run/data?test={params.test_name}&start={params.test_start_time}"
+        f"&stop={params.test_stop_time}&owner={params.test_owner}"
+        f"&access={params.test_access_rights}"
+    )
+    send_headers = {
+        "Authorization": f"Bearer {token}",
+        "content-type": "application/json",
     }
 
-    send_return = requests.post(send_url, headers=send_headers, json=send_obj, verify=False)
+    try:
+        print("==> Uploading object to Horreum...")
+        send_return = requests.post(
+            send_url, headers=send_headers, json=params.data_object, verify=False
+        )
 
-    
-    return "success", SuccessOutput(send_return.text)
+    except requests.ConnectionError or requests.HTTPError or requests.Timeout:
+        return "error", ErrorOutput(
+            f"Error communicating with server: {auth_return.text}"
+        )
 
+    if int(send_return.status_code) != 200 or not send_return.text.isdigit():
+        return "error", ErrorOutput(f"Failed to upload object: {send_return.text}")
 
-# # # #!/bin/bash
-
-# # # TOKEN=$(curl -k https://horreum-keycloak.corp.redhat.com/realms/horreum/protocol/openid-connect/token \
-# # #     -d 'username=foo@bar.com' --data-urlencode 'password=foobar' \
-# # #     -d 'grant_type=password' -d 'client_id=horreum-ui' \
-# # #     | jq -r .access_token)
-# # # TEST='boot-time-verbose'
-# # # START='$.start_time'
-# # # STOP='$.end_time'
-# # # OWNER='rhivos-perf-team'
-# # # ACCESS='PUBLIC'
-# # # curl 'https://horreum.corp.redhat.com/api/run/data?test='$TEST'&start='$START'&stop='$STOP'&owner='$OWNER'&access='$ACCESS \
-# # #     -k -X POST -H 'content-type: application/json' \
-# # #     -H 'Authorization: Bearer '$TOKEN \
-# # #     -d @$1
-
+    print("==> Upload complete")
+    return "success", SuccessOutput(int(send_return.text))
 
 
 if __name__ == "__main__":

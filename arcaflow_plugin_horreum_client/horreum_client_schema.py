@@ -21,7 +21,8 @@ class InputParams:
         schema.description("Base URL for the Horreum server."),
         schema.pattern(
             re.compile(
-                "[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&\/\/=]*)"
+                r"((http|https)\:\/\/)?[a-zA-Z0-9\.\/\?\:@\-_=#]+\."
+                r"([a-zA-Z]){2,6}([a-zA-Z0-9\.\&\/\?\:@\-_=#])*"
             )
         ),
     ]
@@ -31,7 +32,8 @@ class InputParams:
         schema.description("Base URL for the Horreum Keycloak server."),
         schema.pattern(
             re.compile(
-                "[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&\/\/=]*)"
+                r"((http|https)\:\/\/)?[a-zA-Z0-9\.\/\?\:@\-_=#]+\."
+                r"([a-zA-Z]){2,6}([a-zA-Z0-9\.\&\/\?\:@\-_=#])*"
             )
         ),
     ]
@@ -58,7 +60,8 @@ class InputParams:
         schema.description("Owner of the object being uploaded."),
     ]
     test_access_rights: typing.Annotated[
-        access,
+        # access,
+        str,
         schema.name("test access rights"),
         schema.description("Access rights for the object being uploaded."),
     ]
@@ -81,25 +84,23 @@ class InputParams:
     data_object: typing.Annotated[
         typing.Any,
         schema.name("data object for upload"),
-        schema.description(
-            "Data object to be uploaded to the Horreum server"
-        )
+        schema.description("Data object to be uploaded to the Horreum server"),
     ]
 
 
 @dataclass
 class SuccessOutput:
-    """
-    This is the output data structure for the success case.
-    """
-
-    message: str
+    horreum_test_id: typing.Annotated[
+        int,
+        schema.name("horreum test id"),
+        schema.description("Integer ID of test uploaded into Horreum"),
+    ]
 
 
 @dataclass
 class ErrorOutput:
-    """
-    This is the output data structure in the error  case.
-    """
-
-    error: str
+    error: typing.Annotated[
+        str,
+        schema.name("error"),
+        schema.description("An error has occured"),
+    ]
