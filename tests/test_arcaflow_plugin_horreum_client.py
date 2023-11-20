@@ -7,9 +7,7 @@ from arcaflow_plugin_sdk import plugin
 class HelloWorldTest(unittest.TestCase):
     @staticmethod
     def test_serialization():
-        plugin.test_object_serialization(
-            horreum_client_plugin.InputParams("John Doe")
-        )
+        plugin.test_object_serialization(horreum_client_plugin.InputParams("John Doe"))
 
         plugin.test_object_serialization(
             horreum_client_plugin.SuccessOutput("Hello, world!")
