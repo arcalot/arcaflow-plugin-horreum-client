@@ -18,10 +18,23 @@ Uploads an object to the Horreum server
 
 <table><tbody>
 <tr><th>Type:</th><td><code>scope</code></td><tr><th>Root object:</th><td>InputParams</td></tr>
-<tr><th>Properties</th><td><details><summary>data_object (<code>
-    any</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>data object for upload</td></tr><tr><th>Description:</th><td>Data object to be uploaded to the Horreum server</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>
+<tr><th>Properties</th><td><details><summary>data_object (<code>map[<code>string</code>, <code>
+    any</code>]</code>)</summary>
+                <table><tbody><tr><th>Name:</th><td>data object for upload</td></tr><tr><th>Description:</th><td>Data object to be uploaded to the Horreum server</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>map[<code>string</code>, <code>
+    any</code>]</code></td><tr><td colspan="2">
+    <details>
+        <summary>Key type</summary>
+        <table><tbody><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+    </details>
+</td></tr>
+<tr><td colspan="2">
+    <details>
+        <summary>Value type</summary>
+        <table><tbody><tr><th>Type:</th><td><code>
     any</code></td></tbody></table>
+    </details>
+</td></tr>
+</tbody></table>
             </details><details><summary>horreum_keycloak_url (<code>string</code>)</summary>
                 <table><tbody><tr><th>Name:</th><td>horreum keycloak url</td></tr><tr><th>Description:</th><td>Base URL for the Horreum Keycloak server.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td><tr><th>Must match pattern:</th><td><code>((http|https)\:\/\/)?[a-zA-Z0-9\.\/\?\:@\-_=#]&#43;\.([a-zA-Z]){2,6}([a-zA-Z0-9\.\&amp;\/\?\:@\-_=#])*</code></td></tr></tbody></table>
             </details><details><summary>horreum_password (<code>string</code>)</summary>
@@ -47,10 +60,23 @@ Uploads an object to the Horreum server
                 <table><tbody><tr><th>Name:</th><td>test stop time</td></tr><tr><th>Description:</th><td>Datetime formatted stop time for the object being uploaded. Can also be provided as a JSONPath to a key in the document.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details></td></tr>
 <tr><td colspan="2"><details><summary><strong>Objects</strong></summary><details><summary>InputParams (<code>object</code>)</summary>
-            <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>data_object (<code>
-    any</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>data object for upload</td></tr><tr><th>Description:</th><td>Data object to be uploaded to the Horreum server</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>
+            <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>data_object (<code>map[<code>string</code>, <code>
+    any</code>]</code>)</summary>
+        <table><tbody><tr><th>Name:</th><td>data object for upload</td></tr><tr><th>Description:</th><td>Data object to be uploaded to the Horreum server</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>map[<code>string</code>, <code>
+    any</code>]</code></td><tr><td colspan="2">
+    <details>
+        <summary>Key type</summary>
+        <table><tbody><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+    </details>
+</td></tr>
+<tr><td colspan="2">
+    <details>
+        <summary>Value type</summary>
+        <table><tbody><tr><th>Type:</th><td><code>
     any</code></td></tbody></table>
+    </details>
+</td></tr>
+</tbody></table>
         </details><details><summary>horreum_keycloak_url (<code>string</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>horreum keycloak url</td></tr><tr><th>Description:</th><td>Base URL for the Horreum Keycloak server.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td><tr><th>Must match pattern:</th><td><code>((http|https)\:\/\/)?[a-zA-Z0-9\.\/\?\:@\-_=#]&#43;\.([a-zA-Z]){2,6}([a-zA-Z0-9\.\&amp;\/\?\:@\-_=#])*</code></td></tr></tbody></table>
         </details><details><summary>horreum_password (<code>string</code>)</summary>
