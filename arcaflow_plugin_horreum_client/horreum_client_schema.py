@@ -81,7 +81,7 @@ class InputParams:
         ),
     ]
     data_object: typing.Annotated[
-        typing.Any,
+        typing.Dict[str, typing.Any],
         schema.name("data object for upload"),
         schema.description("Data object to be uploaded to the Horreum server"),
     ]
