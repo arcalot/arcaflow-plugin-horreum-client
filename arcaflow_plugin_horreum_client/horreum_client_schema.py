@@ -89,10 +89,10 @@ class InputParams:
 
 @dataclass
 class SuccessOutput:
-    horreum_test_id: typing.Annotated[
+    horreum_run_id: typing.Annotated[
         int,
-        schema.name("horreum test id"),
-        schema.description("Integer ID of test uploaded into Horreum"),
+        schema.name("horreum run id"),
+        schema.description("Integer ID for run of test uploaded into Horreum"),
     ]
 
 
