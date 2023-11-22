@@ -127,13 +127,13 @@ Uploads an object to the Horreum server
 
 <table><tbody>
 <tr><th>Type:</th><td><code>scope</code></td><tr><th>Root object:</th><td>SuccessOutput</td></tr>
-<tr><th>Properties</th><td><details><summary>horreum_test_id (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>horreum test id</td></tr><tr><th>Description:</th><td>Integer ID of test uploaded into Horreum</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>int</code></td>
+<tr><th>Properties</th><td><details><summary>horreum_run_id (<code>int</code>)</summary>
+                <table><tbody><tr><th>Name:</th><td>horreum run id</td></tr><tr><th>Description:</th><td>Integer ID for run of test uploaded into Horreum</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details></td></tr>
 <tr><td colspan="2"><details><summary><strong>Objects</strong></summary><details><summary>SuccessOutput (<code>object</code>)</summary>
-            <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>horreum_test_id (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>horreum test id</td></tr><tr><th>Description:</th><td>Integer ID of test uploaded into Horreum</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>int</code></td>
+            <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>horreum_run_id (<code>int</code>)</summary>
+        <table><tbody><tr><th>Name:</th><td>horreum run id</td></tr><tr><th>Description:</th><td>Integer ID for run of test uploaded into Horreum</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details></td></tr>
 </tbody></table>
