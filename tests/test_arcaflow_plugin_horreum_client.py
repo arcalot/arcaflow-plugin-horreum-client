@@ -42,11 +42,12 @@ plugin_input = horreum_client_plugin.InputParams(
                 "labore": {
                     "et": "dolore",
                     "magna": "aliquyam",
-                }
+                },
             },
-        ]
-    }
+        ],
+    },
 )
+
 
 class HorreumClientTest(unittest.TestCase):
     @staticmethod
