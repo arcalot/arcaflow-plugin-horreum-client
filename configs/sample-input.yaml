@@ -1,3 +1,4 @@
+mock: True
 horreum_url: https://horreum.foo.bar.com
 horreum_keycloak_url: https://horreum-keycloak.foo.bar.com
 horreum_username: username

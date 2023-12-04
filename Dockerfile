@@ -20,9 +20,9 @@ COPY tests /app/${package}/tests
 ENV PYTHONPATH /app/${package}
 WORKDIR /app/${package}
 
-# # # Run tests and return coverage analysis
-# # RUN python -m coverage run tests/test_${package}.py \
-# #  && python -m coverage html -d /htmlcov --omit=/usr/local/*
+# Run tests and return coverage analysis
+RUN python -m coverage run tests/test_${package}.py \
+ && python -m coverage html -d /htmlcov --omit=/usr/local/*
 
 
 # STAGE 2 -- Build final plugin image
@@ -30,7 +30,7 @@ FROM quay.io/arcalot/arcaflow-plugin-baseimage-python-osbase:0.3.1@sha256:0e9384
 ARG package
 
 COPY --from=build /app/requirements.txt /app/
-# # COPY --from=build /htmlcov /htmlcov/
+COPY --from=build /htmlcov /htmlcov/
 COPY LICENSE /app/
 COPY README.md /app/
 COPY ${package}/ /app/${package}
