@@ -1,16 +1,60 @@
 #!/usr/bin/env python3
+
 import unittest
 import horreum_client_plugin
+
 from arcaflow_plugin_sdk import plugin
 
+plugin_input = horreum_client_plugin.InputParams(
+    horreum_url="https://horreum.foo.bar.com",
+    horreum_keycloak_url="https://horreum-keycloak.foo.bar.com",
+    horreum_username="username",
+    horreum_password="supersecret",
+    test_name="$.test_name",
+    test_owner="ownername",
+    test_access_rights="PUBLIC",
+    test_start_time="$.start_time",
+    test_stop_time="$.end_time",
+    data_object={
+        "test_name": "testname",
+        "$schema": "urn:test-schema:02",
+        "cluster_name": "foobar",
+        "uuid": "ffffffff-0264-43dc-97f4-42792e8bad6b",
+        "start_time": "2023-11-16T15:07:36.345179+01:00",
+        "end_time": "2023-11-16T15:16:43.960644+01:00",
+        "test_type": "boot-time",
+        "test_results": [
+            {
+                "lorem": {
+                    "ipsum": "dolor",
+                    "sit": "amet",
+                },
+                "consetetur": {
+                    "sadipscing": "elitr",
+                    "sed": "diam",
+                },
+            },
+            {
+                "nonumy": {
+                    "eirmod": "tempor",
+                    "invidunt": "ut",
+                },
+                "labore": {
+                    "et": "dolore",
+                    "magna": "aliquyam",
+                }
+            },
+        ]
+    }
+)
 
-class HelloWorldTest(unittest.TestCase):
+class HorreumClientTest(unittest.TestCase):
     @staticmethod
     def test_serialization():
-        plugin.test_object_serialization(horreum_client_plugin.InputParams("John Doe"))
+        plugin.test_object_serialization(plugin_input)
 
         plugin.test_object_serialization(
-            horreum_client_plugin.SuccessOutput("Hello, world!")
+            horreum_client_plugin.SuccessOutput(horreum_run_id="12345")
         )
 
         plugin.test_object_serialization(
@@ -18,13 +62,12 @@ class HelloWorldTest(unittest.TestCase):
         )
 
     def test_functional(self):
-        input = horreum_client_plugin.InputParams(name="Example Joe")
+        input = plugin_input
 
-        output_id, output_data = horreum_client_plugin.hello_world(
+        output_id, output_data = horreum_client_plugin.horreum_client(
             params=input, run_id="plugin_ci"
         )
 
-        # The example plugin always returns an error:
         self.assertEqual("success", output_id)
         self.assertEqual(
             output_data,
