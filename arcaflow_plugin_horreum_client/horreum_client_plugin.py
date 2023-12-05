@@ -31,20 +31,7 @@ def horreum_client(
 
     try:
         print("==> Authenticating with keycloak...")
-        if params.mock:
-            with responses.RequestsMock() as rsps:
-                rsps.add(
-                    responses.POST,
-                    auth_url,
-                    json={"access_token": "mock_token"},
-                    status=200,
-                    content_type="application/json",
-                )
-                auth_return = requests.post(auth_url, data=auth_obj, verify=False)
-                assert auth_return.status_code == 200
-        else:
-            auth_return = requests.post(auth_url, data=auth_obj, verify=False)
-
+        auth_return = requests.post(auth_url, data=auth_obj, verify=False)
         token = json.loads(auth_return.text)["access_token"]
 
     except requests.ConnectionError or requests.HTTPError or requests.Timeout:
@@ -66,26 +53,9 @@ def horreum_client(
 
     try:
         print("==> Uploading object to Horreum...")
-        if params.mock:
-            with responses.RequestsMock() as rsps:
-                rsps.add(
-                    responses.POST,
-                    send_url,
-                    body="12345",
-                    status=200,
-                    content_type="text/html",
-                )
-                send_return = requests.post(
-                    send_url,
-                    headers=send_headers,
-                    json=params.data_object,
-                    verify=False,
-                )
-                assert send_return.status_code == 200
-        else:
-            send_return = requests.post(
-                send_url, headers=send_headers, json=params.data_object, verify=False
-            )
+        send_return = requests.post(
+            send_url, headers=send_headers, json=params.data_object, verify=False
+        )
 
     except requests.ConnectionError or requests.HTTPError or requests.Timeout:
         return "error", ErrorOutput(

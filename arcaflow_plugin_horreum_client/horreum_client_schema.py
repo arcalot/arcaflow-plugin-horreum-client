@@ -85,14 +85,6 @@ class InputParams:
         schema.name("data object for upload"),
         schema.description("Data object to be uploaded to the Horreum server"),
     ]
-    mock: typing.Annotated[
-        bool,
-        schema.name("mock responses"),
-        schema.description(
-            "For development and test purposes only."
-            " Mock fake responses for the Horreum URL requests."
-        ),
-    ] = False
 
 
 @dataclass

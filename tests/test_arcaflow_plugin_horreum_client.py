@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import unittest
+import responses
 import horreum_client_plugin
 import horreum_client_schema
 
@@ -8,7 +9,6 @@ from arcaflow_plugin_sdk import plugin
 
 
 plugin_input = horreum_client_plugin.InputParams(
-    mock=True,
     horreum_url="https://horreum.foo.bar.com",
     horreum_keycloak_url="https://horreum-keycloak.foo.bar.com",
     horreum_username="username",
@@ -64,8 +64,27 @@ class HorreumClientTest(unittest.TestCase):
             horreum_client_plugin.ErrorOutput(error="This is an error")
         )
 
+    @responses.activate
     def test_functional(self):
         input = plugin_input
+
+        responses.add(
+            responses.POST,
+            input.horreum_keycloak_url + "/realms/horreum/protocol/openid-connect/token",
+            json={"access_token": "mock_token"},
+            status=200,
+            content_type="application/json",
+        )
+
+        responses.add(
+            responses.POST,
+            input.horreum_url + f"/api/run/data?test={input.test_name}&start={input.test_start_time}"
+            f"&stop={input.test_stop_time}&owner={input.test_owner}"
+            f"&access={input.test_access_rights}",
+            body="12345",
+            status=200,
+            content_type="text/html",
+        )
 
         output_id, output_data = horreum_client_plugin.horreum_client(
             params=input, run_id="plugin_ci"
