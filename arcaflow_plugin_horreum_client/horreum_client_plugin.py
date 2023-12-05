@@ -34,7 +34,7 @@ def horreum_client(
         auth_return = requests.post(auth_url, data=auth_obj, verify=False)
         token = json.loads(auth_return.text)["access_token"]
 
-    except requests.ConnectionError or requests.HTTPError or requests.Timeout:
+    except (requests.ConnectionError, requests.HTTPError, requests.Timeout):
         return "error", ErrorOutput(
             f"Error communicating with server: {auth_return.text}"
         )
@@ -57,7 +57,7 @@ def horreum_client(
             send_url, headers=send_headers, json=params.data_object, verify=False
         )
 
-    except requests.ConnectionError or requests.HTTPError or requests.Timeout:
+    except (requests.ConnectionError, requests.HTTPError, requests.Timeout):
         return "error", ErrorOutput(
             f"Error communicating with server: {auth_return.text}"
         )
