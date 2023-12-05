@@ -3,7 +3,6 @@
 import sys
 import typing
 import requests
-import responses
 import json
 
 from arcaflow_plugin_sdk import plugin

@@ -70,7 +70,8 @@ class HorreumClientTest(unittest.TestCase):
 
         responses.add(
             responses.POST,
-            input.horreum_keycloak_url + "/realms/horreum/protocol/openid-connect/token",
+            input.horreum_keycloak_url
+            + "/realms/horreum/protocol/openid-connect/token",
             json={"access_token": "mock_token"},
             status=200,
             content_type="application/json",
@@ -78,7 +79,8 @@ class HorreumClientTest(unittest.TestCase):
 
         responses.add(
             responses.POST,
-            input.horreum_url + f"/api/run/data?test={input.test_name}&start={input.test_start_time}"
+            input.horreum_url
+            + f"/api/run/data?test={input.test_name}&start={input.test_start_time}"
             f"&stop={input.test_stop_time}&owner={input.test_owner}"
             f"&access={input.test_access_rights}",
             body="12345",
