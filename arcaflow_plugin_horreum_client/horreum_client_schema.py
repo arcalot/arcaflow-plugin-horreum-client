@@ -17,34 +17,44 @@ class access(str, enum.Enum):
 class InputParams:
     horreum_url: typing.Annotated[
         str,
-        schema.name("horreum url"),
-        schema.description("Base URL for the Horreum server."),
+        schema.name("Horreum URL"),
+        schema.description(
+            "The complete base URL for the Horreum server,"
+            " such as 'https://horreum.example.com'."
+        ),
         schema.pattern(
             re.compile(
-                r"((http|https)\:\/\/)?[a-zA-Z0-9\.\/\?\:@\-_=#]+\."
-                r"([a-zA-Z]){2,6}([a-zA-Z0-9\.\&\/\?\:@\-_=#])*"
+                r"(https?:\/\/)?"
+                r"[a-zA-Z0-9_-]{1,63}(\.[a-zA-Z0-9_-]{1,63})*"
+                r"(:[0-9]{1,5})?"
+                r"\/?"
             )
         ),
     ]
     horreum_keycloak_url: typing.Annotated[
         str,
-        schema.name("horreum keycloak url"),
-        schema.description("Base URL for the Horreum Keycloak server."),
+        schema.name("Horreum Keycloak URL"),
+        schema.description(
+            "The complete base URL for the Horreum Keycloak server,"
+            " such as 'https://keycloak.example.com'."
+        ),
         schema.pattern(
             re.compile(
-                r"((http|https)\:\/\/)?[a-zA-Z0-9\.\/\?\:@\-_=#]+\."
-                r"([a-zA-Z]){2,6}([a-zA-Z0-9\.\&\/\?\:@\-_=#])*"
+                r"(https?:\/\/)?"
+                r"[a-zA-Z0-9_-]{1,63}(\.[a-zA-Z0-9_-]{1,63})*"
+                r"(:[0-9]{1,5})?"
+                r"\/?"
             )
         ),
     ]
     horreum_username: typing.Annotated[
         str,
-        schema.name("horreum username"),
+        schema.name("Horreum username"),
         schema.description("Username for the Horreum server."),
     ]
     horreum_password: typing.Annotated[
         str,
-        schema.name("horreum password"),
+        schema.name("Horreum password"),
         schema.description("Password for the Horreum server."),
     ]
     test_name: typing.Annotated[
@@ -83,16 +93,24 @@ class InputParams:
     data_object: typing.Annotated[
         typing.Dict[str, typing.Any],
         schema.name("data object for upload"),
-        schema.description("Data object to be uploaded to the Horreum server"),
+        schema.description("Data object to be uploaded to the Horreum server."),
     ]
+    tls_verify: typing.Annotated[
+        bool,
+        schema.name("TLS verify"),
+        schema.description(
+            "For development and testing pruposes, this can be set to False to disable"
+            " TLS verification for connections to Keycloak and Horreum services."
+        ),
+    ] = True
 
 
 @dataclass
 class SuccessOutput:
     horreum_run_id: typing.Annotated[
         int,
-        schema.name("horreum run id"),
-        schema.description("Integer ID for run of test uploaded into Horreum"),
+        schema.name("Horreum run id"),
+        schema.description("Integer ID for run of test uploaded into Horreum."),
     ]
 
 
@@ -101,5 +119,5 @@ class ErrorOutput:
     error: typing.Annotated[
         str,
         schema.name("error"),
-        schema.description("An error has occured"),
+        schema.description("An error has occured."),
     ]

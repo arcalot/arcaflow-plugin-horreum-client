@@ -9,6 +9,7 @@ from arcaflow_plugin_sdk import plugin
 
 
 plugin_input = horreum_client_plugin.InputParams(
+    tls_verify=False,
     horreum_url="https://horreum.foo.bar.com",
     horreum_keycloak_url="https://horreum-keycloak.foo.bar.com",
     horreum_username="username",
@@ -70,8 +71,8 @@ class HorreumClientTest(unittest.TestCase):
 
         responses.add(
             responses.POST,
-            input.horreum_keycloak_url
-            + "/realms/horreum/protocol/openid-connect/token",
+            f"{input.horreum_keycloak_url}"
+            "/realms/horreum/protocol/openid-connect/token",
             json={"access_token": "mock_token"},
             status=200,
             content_type="application/json",
@@ -79,9 +80,11 @@ class HorreumClientTest(unittest.TestCase):
 
         responses.add(
             responses.POST,
-            input.horreum_url
-            + f"/api/run/data?test={input.test_name}&start={input.test_start_time}"
-            f"&stop={input.test_stop_time}&owner={input.test_owner}"
+            f"{input.horreum_url}/api/run/data?"
+            f"test={input.test_name}"
+            f"&start={input.test_start_time}"
+            f"&stop={input.test_stop_time}"
+            f"&owner={input.test_owner}"
             f"&access={input.test_access_rights}",
             body="12345",
             status=200,

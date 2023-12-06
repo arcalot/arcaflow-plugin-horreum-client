@@ -19,7 +19,7 @@ def horreum_client(
     params: InputParams,
 ) -> typing.Tuple[str, typing.Union[SuccessOutput, ErrorOutput]]:
     auth_url = (
-        params.horreum_keycloak_url + "/realms/horreum/protocol/openid-connect/token"
+        f"{params.horreum_keycloak_url}/realms/horreum/protocol/openid-connect/token"
     )
     auth_obj = {
         "username": params.horreum_username,
@@ -30,7 +30,8 @@ def horreum_client(
 
     try:
         print("==> Authenticating with keycloak...")
-        auth_return = requests.post(auth_url, data=auth_obj, verify=False)
+        auth_return = requests.post(auth_url, data=auth_obj, verify=params.tls_verify)
+        auth_return.raise_for_status()
         token = json.loads(auth_return.text)["access_token"]
 
     except (requests.ConnectionError, requests.HTTPError, requests.Timeout):
@@ -39,12 +40,13 @@ def horreum_client(
         )
 
     send_url = (
-        params.horreum_url
-        + f"/api/run/data?test={params.test_name}&start={params.test_start_time}"
-        f"&stop={params.test_stop_time}&owner={params.test_owner}"
+        f"{params.horreum_url}/api/run/data?"
+        f"test={params.test_name}"
+        f"&start={params.test_start_time}"
+        f"&stop={params.test_stop_time}"
+        f"&owner={params.test_owner}"
         f"&access={params.test_access_rights}"
     )
-    print(f"Send url is {send_url}")
     send_headers = {
         "Authorization": f"Bearer {token}",
         "content-type": "application/json",
@@ -53,7 +55,10 @@ def horreum_client(
     try:
         print("==> Uploading object to Horreum...")
         send_return = requests.post(
-            send_url, headers=send_headers, json=params.data_object, verify=False
+            send_url,
+            headers=send_headers,
+            json=params.data_object,
+            verify=params.tls_verify,
         )
 
     except (requests.ConnectionError, requests.HTTPError, requests.Timeout):

@@ -10,7 +10,7 @@ docker build . -t arcaflow-plugin-horreum-client
 
 Run with the provided sample input:
 ```
-cat configs/sample-input.yaml | docker run -i --rm arcaflow-plugin-horreum-client -f -
+cat inputs/sample-input.yaml | docker run -i --rm arcaflow-plugin-horreum-client -f -
 ```
 
 
