@@ -60,7 +60,6 @@ def horreum_client(
             json=params.data_object,
             verify=params.tls_verify,
         )
-        send_return.raise_for_status()
 
     except (requests.ConnectionError, requests.HTTPError, requests.Timeout):
         return "error", ErrorOutput(
