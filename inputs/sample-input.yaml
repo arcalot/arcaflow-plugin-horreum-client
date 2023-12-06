@@ -1,5 +1,5 @@
-horreum_url: https://horreum.foo.bar.com
-horreum_keycloak_url: https://horreum-keycloak.foo.bar.com
+horreum_url: https://horreum.example.com
+horreum_keycloak_url: https://horreum-keycloak.example.com
 horreum_username: username
 horreum_password: supersecret
 test_name: $.test_name
