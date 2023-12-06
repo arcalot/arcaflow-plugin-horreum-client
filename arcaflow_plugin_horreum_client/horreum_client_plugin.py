@@ -36,7 +36,7 @@ def horreum_client(
 
     except (requests.ConnectionError, requests.HTTPError, requests.Timeout):
         return "error", ErrorOutput(
-            f"Error communicating with server: {auth_return.text}"
+            f"Error communicating with the Keycloak server: {auth_return.text}"
         )
 
     send_url = (
@@ -60,10 +60,11 @@ def horreum_client(
             json=params.data_object,
             verify=params.tls_verify,
         )
+        send_return.raise_for_status()
 
     except (requests.ConnectionError, requests.HTTPError, requests.Timeout):
         return "error", ErrorOutput(
-            f"Error communicating with server: {auth_return.text}"
+            f"Error communicating with the Horreum server: {auth_return.text}"
         )
 
     if int(send_return.status_code) != 200 or not send_return.text.isdigit():
