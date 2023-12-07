@@ -34,11 +34,12 @@ def horreum_client(
         auth_return.raise_for_status()
         token = json.loads(auth_return.text)["access_token"]
 
-    except(requests.exceptions.SSLError):
+    except requests.exceptions.SSLError:
         return "error", ErrorOutput(
-            f"Unable to establish SSL connection with the Keycloak server: {auth_return.text}"
+            "Unable to establish SSL connection with the Keycloak server: "
+            + {auth_return.text}
         )
-    
+
     except (requests.ConnectionError, requests.HTTPError, requests.Timeout):
         return "error", ErrorOutput(
             f"Error communicating with the Keycloak server: {auth_return.text}"
@@ -66,9 +67,10 @@ def horreum_client(
             verify=params.tls_verify,
         )
 
-    except(requests.exceptions.SSLError):
+    except requests.exceptions.SSLError:
         return "error", ErrorOutput(
-            f"Unable to establish SSL connection with the Horreum server: {auth_return.text}"
+            "Unable to establish SSL connection with the Horreum server: "
+            + {auth_return.text}
         )
 
     except (requests.ConnectionError, requests.HTTPError, requests.Timeout):
