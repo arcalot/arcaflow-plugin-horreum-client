@@ -34,9 +34,19 @@ def horreum_client(
         auth_return.raise_for_status()
         token = json.loads(auth_return.text)["access_token"]
 
-    except (requests.ConnectionError, requests.HTTPError, requests.Timeout):
+    except requests.exceptions.SSLError as e:
         return "error", ErrorOutput(
-            f"Error communicating with the Keycloak server: {auth_return.text}"
+            f"Unable to establish SSL connection with the Keycloak server: {e}"
+        )
+
+    except (requests.ConnectionError, requests.Timeout) as e:
+        return "error", ErrorOutput(
+            f"Error communicating with the Keycloak server: {e}"
+        )
+
+    except requests.HTTPError:
+        return "error", ErrorOutput(
+            f"Error returned from the Keycloak server: {auth_return.text}"
         )
 
     send_url = (
@@ -61,9 +71,19 @@ def horreum_client(
             verify=params.tls_verify,
         )
 
-    except (requests.ConnectionError, requests.HTTPError, requests.Timeout):
+    except requests.exceptions.SSLError as e:
         return "error", ErrorOutput(
-            f"Error communicating with the Horreum server: {auth_return.text}"
+            f"Unable to establish SSL connection with the Horreum server: {e}"
+        )
+
+    except (requests.ConnectionError, requests.Timeout) as e:
+        return "error", ErrorOutput(
+            f"Error communicating with the Horreum server: {e}"
+        )
+
+    except requests.HTTPError:
+        return "error", ErrorOutput(
+            f"Error returned from the Horreum server: {auth_return.text}"
         )
 
     if int(send_return.status_code) != 200 or not send_return.text.isdigit():
