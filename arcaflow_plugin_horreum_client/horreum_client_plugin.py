@@ -43,7 +43,7 @@ def horreum_client(
         return "error", ErrorOutput(
             f"Error communicating with the Keycloak server: {e}"
         )
-    
+
     except requests.HTTPError:
         return "error", ErrorOutput(
             f"Error returned from the Keycloak server: {auth_return.text}"
@@ -80,7 +80,7 @@ def horreum_client(
         return "error", ErrorOutput(
             f"Error communicating with the Horreum server: {e}"
         )
-    
+
     except requests.HTTPError:
         return "error", ErrorOutput(
             f"Error returned from the Horreum server: {auth_return.text}"
