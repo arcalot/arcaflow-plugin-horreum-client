@@ -4,7 +4,7 @@ ARG package=arcaflow_plugin_horreum_client
 # STAGE 1 -- Build module dependencies and run tests
 # The 'poetry' and 'coverage' modules are installed and verson-controlled in the
 # quay.io/arcalot/arcaflow-plugin-baseimage-python-buildbase image to limit drift
-FROM quay.io/arcalot/arcaflow-plugin-baseimage-python-buildbase:0.4.2@sha256:eecaa5bbcac62d5263cfe575d026434c65ee4cbec833931335806cea597c60e3 as build
+FROM quay.io/arcalot/arcaflow-plugin-baseimage-python-buildbase:0.4.2 as build
 ARG package
 
 COPY poetry.lock /app/
@@ -26,7 +26,7 @@ RUN python -m coverage run tests/test_${package}.py \
 
 
 # STAGE 2 -- Build final plugin image
-FROM quay.io/arcalot/arcaflow-plugin-baseimage-python-osbase:0.4.2@sha256:f8c6ef07baca91888db81f50d1eb54530df8a6bb8e3071e44b86667f5dbfe4b5
+FROM quay.io/arcalot/arcaflow-plugin-baseimage-python-osbase:0.4.2
 ARG package
 
 COPY --from=build /app/requirements.txt /app/
