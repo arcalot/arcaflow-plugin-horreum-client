@@ -31,31 +31,14 @@ class InputParams:
             )
         ),
     ]
-    horreum_keycloak_url: typing.Annotated[
+    api_key_pattern = re.compile(
+        r"HUSR_[A-Z0-9]{8}_[A-Z0-9]{4}_[A-Z0-9]{4}_[A-Z0-9]{4}_[A-Z0-9]{12}"
+    )
+    horreum_api_key: typing.Annotated[
         str,
-        schema.name("Horreum Keycloak URL"),
-        schema.description(
-            "The complete base URL for the Horreum Keycloak server,"
-            " such as 'https://keycloak.example.com'."
-        ),
-        schema.pattern(
-            re.compile(
-                r"(https?:\/\/)?"
-                r"[a-zA-Z0-9_-]{1,63}(\.[a-zA-Z0-9_-]{1,63})*"
-                r"(:[0-9]{1,5})?"
-                r"\/?"
-            )
-        ),
-    ]
-    horreum_username: typing.Annotated[
-        str,
-        schema.name("Horreum username"),
-        schema.description("Username for the Horreum server."),
-    ]
-    horreum_password: typing.Annotated[
-        str,
-        schema.name("Horreum password"),
-        schema.description("Password for the Horreum server."),
+        schema.pattern(api_key_pattern),
+        schema.name("Horreum API Key"),
+        schema.description("The API Key used to authenticate with the Horreum server."),
     ]
     test_name: typing.Annotated[
         str,

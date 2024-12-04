@@ -1,7 +1,5 @@
 horreum_url: https://horreum.example.com
-horreum_keycloak_url: https://horreum-keycloak.example.com
-horreum_username: username
-horreum_password: supersecret
+horreum_api_key: HUSR_00000000_0000_0000_0000_000000000000
 test_name: $.test_name
 test_owner: testowner
 test_access_rights: PUBLIC
