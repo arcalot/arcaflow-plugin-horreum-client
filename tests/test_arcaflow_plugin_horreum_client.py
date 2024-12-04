@@ -11,9 +11,7 @@ from arcaflow_plugin_sdk import plugin
 plugin_input = horreum_client_plugin.InputParams(
     tls_verify=False,
     horreum_url="https://horreum.example.com",
-    horreum_keycloak_url="https://horreum-keycloak.example.com",
-    horreum_username="username",
-    horreum_password="supersecret",
+    horreum_api_key="HUSR_00000000_0000_0000_0000_000000000000",
     test_name="$.test_name",
     test_owner="ownername",
     test_access_rights=horreum_client_schema.access.PUBLIC,
@@ -68,15 +66,6 @@ class HorreumClientTest(unittest.TestCase):
     @responses.activate
     def test_functional(self):
         input = plugin_input
-
-        responses.add(
-            responses.POST,
-            input.horreum_keycloak_url
-            + "/realms/horreum/protocol/openid-connect/token",
-            json={"access_token": "mock_token"},
-            status=200,
-            content_type="application/json",
-        )
 
         responses.add(
             responses.POST,
