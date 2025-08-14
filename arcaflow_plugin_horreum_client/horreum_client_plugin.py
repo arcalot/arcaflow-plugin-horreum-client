@@ -56,7 +56,7 @@ def horreum_client(
     except requests.HTTPError as e:
         return "error", ErrorOutput(f"Error returned from the Horreum server: {e}")
 
-    if int(send_return.status_code) != 200 or not send_return.text.isdigit():
+    if not send_return.ok or not send_return.text.isdigit():
         return "error", ErrorOutput(f"Failed to upload object: {send_return.text}")
 
     print("==> Upload complete")
