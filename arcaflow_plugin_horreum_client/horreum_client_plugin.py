@@ -4,6 +4,7 @@ import sys
 import typing
 import requests
 
+import warnings
 from arcaflow_plugin_sdk import plugin
 from horreum_client_schema import InputParams, SuccessOutput, ErrorOutput
 
@@ -17,6 +18,10 @@ from horreum_client_schema import InputParams, SuccessOutput, ErrorOutput
 def horreum_client(
     params: InputParams,
 ) -> typing.Tuple[str, typing.Union[SuccessOutput, ErrorOutput]]:
+
+    # Conditionally suppress SSL warnings only if TLS verification is disabled
+    if not params.tls_verify:
+        warnings.filterwarnings("ignore", message="Unverified HTTPS request")
 
     send_url = (
         f"{params.horreum_url}/api/run/data?"
