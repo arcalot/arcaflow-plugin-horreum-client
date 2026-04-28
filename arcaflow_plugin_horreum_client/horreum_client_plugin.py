@@ -31,8 +31,8 @@ def horreum_client(
         f"&owner={params.test_owner}"
         f"&access={params.test_access_rights}"
     )
-    if params.run_description is not None:
-        send_url += f"&description={params.run_description}"
+    if params.test_description is not None:
+        send_url += f"&description={params.test_description}"
     send_headers = {
         "X-Horreum-API-Key": params.horreum_api_key,
         "content-type": "application/json",

@@ -17,7 +17,7 @@ plugin_input = horreum_client_plugin.InputParams(
     test_access_rights=horreum_client_schema.access.PUBLIC,
     test_start_time="$.start_time",
     test_stop_time="$.end_time",
-    run_description="$.description",
+    test_description="$.description",
     data_object={
         "test_name": "testname",
         "$schema": "urn:test-schema:02",
@@ -77,7 +77,7 @@ class HorreumClientTest(unittest.TestCase):
             f"&stop={input.test_stop_time}"
             f"&owner={input.test_owner}"
             f"&access={input.test_access_rights}"
-            f"&description={input.run_description}",
+            f"&description={input.test_description}",
             body="12345",
             status=200,
             content_type="text/html",
