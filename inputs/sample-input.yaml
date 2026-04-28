@@ -5,6 +5,7 @@ test_owner: testowner
 test_access_rights: PUBLIC
 test_start_time: $.start_time
 test_stop_time: $.end_time
+test_description: $.description
 data_object:
   test_name: testname
   $schema: urn:schema-name:02

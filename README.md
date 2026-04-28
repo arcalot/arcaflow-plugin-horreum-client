@@ -29,85 +29,107 @@ Uploads an object to the Horreum server
                 <table><tbody><tr><th>Name:</th><td>data object for upload</td></tr><tr><th>Description:</th><td width="500">Data object to be uploaded to the Horreum server.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>map[<code>string</code>,<code>any</code>]</code></td><tr><td colspan="2">
     <details>
         <summary>Key type</summary>
-        <table><tbody><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Type:</th><td><code>string</code></td></tr>
+</tbody></table>
     </details>
 </td></tr>
 <tr><td colspan="2">
     <details>
         <summary>Value type</summary>
-        <table><tbody><tr><th>Type:</th><td><code>any</code></td></tbody></table>
+        <table><tbody><tr><th>Type:</th><td><code>any</code></td></tr>
+</tbody></table>
     </details>
 </td></tr>
+</tr>
 </tbody></table>
-            </details><details><summary>horreum_keycloak_url (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Horreum Keycloak URL</td></tr><tr><th>Description:</th><td width="500">The complete base URL for the Horreum Keycloak server, such as &#39;https://keycloak.example.com&#39;.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td><tr><th>Must match pattern:</th><td><code>(https?:\/\/)?[a-zA-Z0-9_-]{1,63}(\.[a-zA-Z0-9_-]{1,63})*(:[0-9]{1,5})?\/?</code></td></tr></tbody></table>
-            </details><details><summary>horreum_password (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Horreum password</td></tr><tr><th>Description:</th><td width="500">Password for the Horreum server.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+            </details><details><summary>horreum_api_key (<code>string</code>)</summary>
+                <table><tbody><tr><th>Name:</th><td>Horreum API Key</td></tr><tr><th>Description:</th><td width="500">The API Key used to authenticate with the Horreum server.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td><tr><th>Must match pattern:</th><td><code>HUSR_[A-Z0-9]{8}_[A-Z0-9]{4}_[A-Z0-9]{4}_[A-Z0-9]{4}_[A-Z0-9]{12}</code></td></tr></tr>
+</tbody></table>
             </details><details><summary>horreum_url (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Horreum URL</td></tr><tr><th>Description:</th><td width="500">The complete base URL for the Horreum server, such as &#39;https://horreum.example.com&#39;.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td><tr><th>Must match pattern:</th><td><code>(https?:\/\/)?[a-zA-Z0-9_-]{1,63}(\.[a-zA-Z0-9_-]{1,63})*(:[0-9]{1,5})?\/?</code></td></tr></tbody></table>
-            </details><details><summary>horreum_username (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Horreum username</td></tr><tr><th>Description:</th><td width="500">Username for the Horreum server.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>Horreum URL</td></tr><tr><th>Description:</th><td width="500">The complete base URL for the Horreum server, such as &#39;https://horreum.example.com&#39;.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td><tr><th>Must match pattern:</th><td><code>(https?:\/\/)?[a-zA-Z0-9_-]{1,63}(\.[a-zA-Z0-9_-]{1,63})*(:[0-9]{1,5})?\/?</code></td></tr></tr>
+</tbody></table>
             </details><details><summary>test_access_rights (<code>enum[string]</code>)</summary>
                 <table><tbody><tr><th>Name:</th><td>test access rights</td></tr><tr><th>Description:</th><td width="500">Access rights for the object being uploaded.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
         <details><summary>Values</summary>
             <ul><li><strong><code>PRIVATE</code>:</strong> PRIVATE</li><li><strong><code>PROTECTED</code>:</strong> PROTECTED</li><li><strong><code>PUBLIC</code>:</strong> PUBLIC</li></ul>
         </details>
     </td>
-</tr></tbody></table>
+</tr></tr>
+</tbody></table>
+            </details><details><summary>test_description (<code>string</code>)</summary>
+                <table><tbody><tr><th>Name:</th><td>test description</td></tr><tr><th>Description:</th><td width="500">Description for the run being uploaded. Can also be provided as a JSONPath to a key in the document.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tr>
+</tbody></table>
             </details><details><summary>test_name (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>test name</td></tr><tr><th>Description:</th><td width="500">Name of the target test in Horreum for the object being uploaded.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>test name</td></tr><tr><th>Description:</th><td width="500">Name of the target test in Horreum for the object being uploaded.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tr>
+</tbody></table>
             </details><details><summary>test_owner (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>test owner</td></tr><tr><th>Description:</th><td width="500">Owner of the object being uploaded.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>test owner</td></tr><tr><th>Description:</th><td width="500">Owner of the object being uploaded.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tr>
+</tbody></table>
             </details><details><summary>test_start_time (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>test start time</td></tr><tr><th>Description:</th><td width="500">Datetime formatted start time for the object being uploaded. Can also be provided as a JSONPath to a key in the document.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>test start time</td></tr><tr><th>Description:</th><td width="500">Datetime formatted start time for the object being uploaded. Can also be provided as a JSONPath to a key in the document.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tr>
+</tbody></table>
             </details><details><summary>test_stop_time (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>test stop time</td></tr><tr><th>Description:</th><td width="500">Datetime formatted stop time for the object being uploaded. Can also be provided as a JSONPath to a key in the document.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>test stop time</td></tr><tr><th>Description:</th><td width="500">Datetime formatted stop time for the object being uploaded. Can also be provided as a JSONPath to a key in the document.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tr>
+</tbody></table>
             </details><details><summary>tls_verify (<code>bool</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>TLS verify</td></tr><tr><th>Description:</th><td width="500">For development and testing pruposes, this can be set to False to disable TLS verification for connections to Keycloak and Horreum services.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>true</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>TLS verify</td></tr><tr><th>Description:</th><td width="500">For development and testing pruposes, this can be set to False to disable TLS verification for connections to Keycloak and Horreum services.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>true</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tr>
+</tbody></table>
             </details></td></tr>
 <tr><td colspan="2"><details><summary><strong>Objects</strong></summary><details><summary>InputParams (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>data_object (<code>map[<code>string</code>,<code>any</code>]</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>data object for upload</td></tr><tr><th>Description:</th><td width="500">Data object to be uploaded to the Horreum server.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>map[<code>string</code>,<code>any</code>]</code></td><tr><td colspan="2">
     <details>
         <summary>Key type</summary>
-        <table><tbody><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Type:</th><td><code>string</code></td></tr>
+</tbody></table>
     </details>
 </td></tr>
 <tr><td colspan="2">
     <details>
         <summary>Value type</summary>
-        <table><tbody><tr><th>Type:</th><td><code>any</code></td></tbody></table>
+        <table><tbody><tr><th>Type:</th><td><code>any</code></td></tr>
+</tbody></table>
     </details>
 </td></tr>
+</tr>
 </tbody></table>
-        </details><details><summary>horreum_keycloak_url (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Horreum Keycloak URL</td></tr><tr><th>Description:</th><td width="500">The complete base URL for the Horreum Keycloak server, such as &#39;https://keycloak.example.com&#39;.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td><tr><th>Must match pattern:</th><td><code>(https?:\/\/)?[a-zA-Z0-9_-]{1,63}(\.[a-zA-Z0-9_-]{1,63})*(:[0-9]{1,5})?\/?</code></td></tr></tbody></table>
-        </details><details><summary>horreum_password (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Horreum password</td></tr><tr><th>Description:</th><td width="500">Password for the Horreum server.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        </details><details><summary>horreum_api_key (<code>string</code>)</summary>
+        <table><tbody><tr><th>Name:</th><td>Horreum API Key</td></tr><tr><th>Description:</th><td width="500">The API Key used to authenticate with the Horreum server.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td><tr><th>Must match pattern:</th><td><code>HUSR_[A-Z0-9]{8}_[A-Z0-9]{4}_[A-Z0-9]{4}_[A-Z0-9]{4}_[A-Z0-9]{12}</code></td></tr></tr>
+</tbody></table>
         </details><details><summary>horreum_url (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Horreum URL</td></tr><tr><th>Description:</th><td width="500">The complete base URL for the Horreum server, such as &#39;https://horreum.example.com&#39;.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td><tr><th>Must match pattern:</th><td><code>(https?:\/\/)?[a-zA-Z0-9_-]{1,63}(\.[a-zA-Z0-9_-]{1,63})*(:[0-9]{1,5})?\/?</code></td></tr></tbody></table>
-        </details><details><summary>horreum_username (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Horreum username</td></tr><tr><th>Description:</th><td width="500">Username for the Horreum server.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>Horreum URL</td></tr><tr><th>Description:</th><td width="500">The complete base URL for the Horreum server, such as &#39;https://horreum.example.com&#39;.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td><tr><th>Must match pattern:</th><td><code>(https?:\/\/)?[a-zA-Z0-9_-]{1,63}(\.[a-zA-Z0-9_-]{1,63})*(:[0-9]{1,5})?\/?</code></td></tr></tr>
+</tbody></table>
         </details><details><summary>test_access_rights (<code>enum[string]</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>test access rights</td></tr><tr><th>Description:</th><td width="500">Access rights for the object being uploaded.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
         <details><summary>Values</summary>
             <ul><li><strong><code>PRIVATE</code>:</strong> PRIVATE</li><li><strong><code>PROTECTED</code>:</strong> PROTECTED</li><li><strong><code>PUBLIC</code>:</strong> PUBLIC</li></ul>
         </details>
     </td>
-</tr></tbody></table>
-        </details><details><summary>test_name (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>test name</td></tr><tr><th>Description:</th><td width="500">Name of the target test in Horreum for the object being uploaded.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
-        </details><details><summary>test_owner (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>test owner</td></tr><tr><th>Description:</th><td width="500">Owner of the object being uploaded.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
-        </details><details><summary>test_start_time (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>test start time</td></tr><tr><th>Description:</th><td width="500">Datetime formatted start time for the object being uploaded. Can also be provided as a JSONPath to a key in the document.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
-        </details><details><summary>test_stop_time (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>test stop time</td></tr><tr><th>Description:</th><td width="500">Datetime formatted stop time for the object being uploaded. Can also be provided as a JSONPath to a key in the document.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
-        </details><details><summary>tls_verify (<code>bool</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>TLS verify</td></tr><tr><th>Description:</th><td width="500">For development and testing pruposes, this can be set to False to disable TLS verification for connections to Keycloak and Horreum services.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>true</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
-        </details></td></tr>
+</tr></tr>
 </tbody></table>
-        </details></details></td></tr>
+        </details><details><summary>test_description (<code>string</code>)</summary>
+        <table><tbody><tr><th>Name:</th><td>test description</td></tr><tr><th>Description:</th><td width="500">Description for the run being uploaded. Can also be provided as a JSONPath to a key in the document.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tr>
+</tbody></table>
+        </details><details><summary>test_name (<code>string</code>)</summary>
+        <table><tbody><tr><th>Name:</th><td>test name</td></tr><tr><th>Description:</th><td width="500">Name of the target test in Horreum for the object being uploaded.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tr>
+</tbody></table>
+        </details><details><summary>test_owner (<code>string</code>)</summary>
+        <table><tbody><tr><th>Name:</th><td>test owner</td></tr><tr><th>Description:</th><td width="500">Owner of the object being uploaded.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tr>
+</tbody></table>
+        </details><details><summary>test_start_time (<code>string</code>)</summary>
+        <table><tbody><tr><th>Name:</th><td>test start time</td></tr><tr><th>Description:</th><td width="500">Datetime formatted start time for the object being uploaded. Can also be provided as a JSONPath to a key in the document.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tr>
+</tbody></table>
+        </details><details><summary>test_stop_time (<code>string</code>)</summary>
+        <table><tbody><tr><th>Name:</th><td>test stop time</td></tr><tr><th>Description:</th><td width="500">Datetime formatted stop time for the object being uploaded. Can also be provided as a JSONPath to a key in the document.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tr>
+</tbody></table>
+        </details><details><summary>tls_verify (<code>bool</code>)</summary>
+        <table><tbody><tr><th>Name:</th><td>TLS verify</td></tr><tr><th>Description:</th><td width="500">For development and testing pruposes, this can be set to False to disable TLS verification for connections to Keycloak and Horreum services.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>true</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tr>
+</tbody></table>
+        </details></td></tr>
+</tr>
+</tbody></table>
+        </details></details></td></tr></tr>
+
 </tbody></table>
 
 ### Outputs
@@ -118,14 +140,18 @@ Uploads an object to the Horreum server
 <table><tbody>
 <tr><th>Type:</th><td><code>scope</code></td><tr><th>Root object:</th><td>ErrorOutput</td></tr>
 <tr><th>Properties</th><td><details><summary>error (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>error</td></tr><tr><th>Description:</th><td width="500">An error has occured.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>error</td></tr><tr><th>Description:</th><td width="500">An error has occured.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tr>
+</tbody></table>
             </details></td></tr>
 <tr><td colspan="2"><details><summary><strong>Objects</strong></summary><details><summary>ErrorOutput (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>error (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>error</td></tr><tr><th>Description:</th><td width="500">An error has occured.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
-        </details></td></tr>
+        <table><tbody><tr><th>Name:</th><td>error</td></tr><tr><th>Description:</th><td width="500">An error has occured.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tr>
 </tbody></table>
-        </details></details></td></tr>
+        </details></td></tr>
+</tr>
+</tbody></table>
+        </details></details></td></tr></tr>
+
 </tbody></table>
 
 #### success
@@ -134,14 +160,18 @@ Uploads an object to the Horreum server
 <tr><th>Type:</th><td><code>scope</code></td><tr><th>Root object:</th><td>SuccessOutput</td></tr>
 <tr><th>Properties</th><td><details><summary>horreum_run_id (<code>int</code>)</summary>
                 <table><tbody><tr><th>Name:</th><td>Horreum run id</td></tr><tr><th>Description:</th><td width="500">Integer ID for run of test uploaded into Horreum.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>int</code></td>
+</tr>
 </tbody></table>
             </details></td></tr>
 <tr><td colspan="2"><details><summary><strong>Objects</strong></summary><details><summary>SuccessOutput (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>horreum_run_id (<code>int</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>Horreum run id</td></tr><tr><th>Description:</th><td width="500">Integer ID for run of test uploaded into Horreum.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>int</code></td>
+</tr>
 </tbody></table>
         </details></td></tr>
+</tr>
 </tbody></table>
-        </details></details></td></tr>
+        </details></details></td></tr></tr>
+
 </tbody></table>
 <!-- End of autogenerated documentation -->
