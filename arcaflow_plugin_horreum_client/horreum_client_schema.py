@@ -78,6 +78,14 @@ class InputParams:
         schema.name("data object for upload"),
         schema.description("Data object to be uploaded to the Horreum server."),
     ]
+    run_description: typing.Annotated[
+        typing.Optional[str],
+        schema.name("run description"),
+        schema.description(
+            "Description for the run being uploaded."
+            " Can also be provided as a JSONPath to a key in the document."
+        ),
+    ] = None
     tls_verify: typing.Annotated[
         bool,
         schema.name("TLS verify"),
