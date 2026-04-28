@@ -93,7 +93,6 @@ class HorreumClientTest(unittest.TestCase):
             horreum_client_plugin.SuccessOutput(12345),
         )
 
-
     @responses.activate
     def test_functional_no_description(self):
         input = horreum_client_plugin.InputParams(
